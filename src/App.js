@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import Input from '../components/Input';
+import Timer from '../components/Timer';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           HMR works!
         </p>
         <Input />
+        <Timer />
       </div>
     )
   }
