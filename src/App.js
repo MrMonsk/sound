@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import Input from '../components/Input';
-import Timer from '../components/Timer';
+import Main from '../containers/Main'
 
 class App extends Component {
   render() {
@@ -15,8 +14,7 @@ class App extends Component {
         <p className="App-intro">
           HMR works!
         </p>
-        <Input />
-        <Timer />
+        <Main />
       </div>
     )
   }
