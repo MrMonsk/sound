@@ -3,7 +3,8 @@ import { createOscillator, playOscillator, pauseOscillator } from '../utils/util
 
 class Tone extends Component {
     componentDidMount() {
-        createOscillator('triangle', 442);
+        console.log(this.props)
+        createOscillator(this.props.waveType, this.props.frequency);
     }
 
     render() {
@@ -13,6 +14,7 @@ class Tone extends Component {
                 <button onClick={() => { 
                     pauseOscillator();
                 }}>stop</button>
+                <button onClick={this.props.toggle}>start over</button>
             </div>
         );
     }

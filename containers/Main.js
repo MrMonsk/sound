@@ -8,9 +8,6 @@ class Main extends Component {
     render() {
         return (
             <div className='main'>
-                <Input label='answer' />
-                <Timer />
-                <Tone />
                 <EditableToneGenerator />
             </div>
         )
