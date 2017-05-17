@@ -14,3 +14,7 @@ export function playOscillator() {
 export function pauseOscillator() {
     osc.disconnect(context.destination);
 }
+
+export function randomNumber() {
+    return Math.floor(Math.random() * 12);
+}
