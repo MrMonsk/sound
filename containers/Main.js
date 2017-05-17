@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
 import Timer from '../components/Timer';
+import Tone from '../components/Tone';
 
 class Main extends Component {
     render() {
@@ -8,6 +9,7 @@ class Main extends Component {
             <div className='main'>
                 <Input label='answer' />
                 <Timer />
+                <Tone />
             </div>
         )
     }
