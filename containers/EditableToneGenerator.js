@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
 import Tone from '../components/Tone';
+import Button from '../components/Button';
+import { waveTypes } from '../constants/basic';
 
 class EditableToneGenerator extends Component {
     constructor() {
         super();
         this.state = {
             frequency: 440,
-            showPlay: false
+            showPlay: false,
+            showInput: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
         this.startOver = this.startOver.bind(this);
+    }
+
+    handleButtonClick(e) {
+        this.setState({ waveType: e.target.innerText, showInput: true })
     }
 
     startOver() {
@@ -24,20 +32,24 @@ class EditableToneGenerator extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const values = this.state.value.split(', ');
-        this.setState({ showPlay: true, frequency: values[0], waveType: values[1] })
-        setTimeout(() => {
-            alert(`You have written ${this.state.value}. This means that freq: ${this.state.frequency}, wave: ${this.state.waveType}`);
-        }, 0);
-        
+        this.setState({ showPlay: true, frequency: this.state.value })
     }
 
     render() {
-        const { showPlay, frequency, waveType } = this.state;
+        const { showPlay, frequency, waveType, showInput } = this.state;
         return (
             <div>
-                <Input label='frequency' value={this.state.value} onSubmit={this.handleSubmit} handleChange={this.handleInputChange} />
-                {showPlay ? <Tone frequency={frequency} waveType={waveType} toggle={this.startOver} /> : 'Enter a frequency, waveType above' }
+                <p>select a wavetype:</p>
+                {
+                    waveTypes.map((type) => {
+                        return (
+                            <Button key={type + 'button'} buttonText={type} handleClick={this.handleButtonClick} />
+                        )
+                    })
+                }
+                <p>{waveType ? `You've selected: ${waveType}` : '' }</p>
+                {showInput ? <Input label='frequency' value={this.state.value} onSubmit={this.handleSubmit} handleChange={this.handleInputChange} /> : '' }
+                {showPlay ? <Tone frequency={frequency} waveType={waveType} toggle={this.startOver} /> : 'Enter a frequency, or click random' }
             </div>
         )
 

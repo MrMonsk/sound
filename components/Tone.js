@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { createOscillator, playOscillator, pauseOscillator } from '../utils/utils';
+import { updateOscillator, playOscillator, pauseOscillator } from '../utils/utils';
 
 class Tone extends Component {
     componentDidMount() {
-        console.log(this.props)
-        createOscillator(this.props.waveType, this.props.frequency);
+        updateOscillator(this.props.waveType, this.props.frequency);
+    }
+
+    shouldComponentUpdate(nextProps) {
+        updateOscillator(nextProps.waveType, nextProps.frequency);
+        return true;
     }
 
     render() {

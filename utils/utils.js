@@ -2,7 +2,7 @@ const context = new AudioContext();
 const osc = context.createOscillator();
 osc.start();
 
-export function createOscillator(waveType, frequency=440) {
+export function updateOscillator(waveType, frequency=440) {
     osc.type = waveType;
     osc.frequency.value = frequency;
 }

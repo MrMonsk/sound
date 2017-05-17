@@ -9,3 +9,10 @@ export const basicModes = {
     harmonicMinor: [0,2,3,5,7,8,11,12],
     melodicMinor: [0,2,3,5,7,9,11,12]
 }
+
+export const waveTypes = [
+    'sine',
+    'square',
+    'triangle',
+    'sawtooth'
+]
