@@ -7,27 +7,15 @@ class Input extends Component {
             input: '',
             value: ''
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleInputChange(e) {
-        this.setState({ input: e.target.value, value: e.target.value })
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        alert(`You have written ${this.state.input}`);
-        this.setState({ value: '' })
     }
 
     render() {
-        const { label } = this.props;
+        const { label, onSubmit, handleChange, value } = this.props;
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={onSubmit}>
                 <label>
                     {label}:
-                    <input type="text" value={this.state.value} onChange={this.handleInputChange} />
+                    <input type="text" value={value} onChange={handleChange} />
                 </label>
                 <input type="submit" value="Enter" />
             </form>
