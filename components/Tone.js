@@ -14,10 +14,8 @@ class Tone extends Component {
     render() {
         return (
             <div>                
-                <button onClick={() => { playOscillator() }}>play me</button>
-                <button onClick={() => { 
-                    pauseOscillator();
-                }}>stop</button>
+                <button onClick={() => { playOscillator() }}>play</button>
+                <button onClick={() => { pauseOscillator() }}>pause</button>
                 <button onClick={this.props.toggle}>start over</button>
             </div>
         );
