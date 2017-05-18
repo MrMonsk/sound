@@ -24,5 +24,8 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
     ]
+  },
+  devServer: {
+    disableHostCheck: true
   }
 }
