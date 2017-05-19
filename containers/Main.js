@@ -3,12 +3,14 @@ import Input from '../components/Input';
 import Timer from '../components/Timer';
 import EditableToneGenerator from './EditableToneGenerator';
 import Tone from '../components/Tone';
+import Dashboard from './Dashboard';
 
 class Main extends Component {
     render() {
         return (
             <div className='main'>
                 <EditableToneGenerator />
+                <Dashboard />
             </div>
         )
     }
