@@ -23,6 +23,6 @@ export function pauseOscillator() {
     }, 300);
 }
 
-export function randomNumber() {
-    return Math.floor(Math.random() * 12);
+export function randomNumber(num) {
+    return Math.floor(Math.random() * num);
 }
