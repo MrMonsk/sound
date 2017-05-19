@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
 import Tone from '../components/Tone';
-import Button from '../components/Button';
 import { waveTypes } from '../constants/basic';
 import { randomNumber } from '../utils/utils';
+
+// UI
+import { Button, Tooltip, Icon } from 'antd';
+import saw from '../assets/saw.svg';
+import sine from'../assets/sine.svg';
+import square from '../assets/square.svg';
+import triangle from '../assets/triangle.svg';
+
+const types = {
+    sawtooth: saw,
+    sine: sine,
+    square: square,
+    triangle: triangle
+}
 
 class EditableToneGenerator extends Component {
     constructor() {
@@ -11,7 +24,8 @@ class EditableToneGenerator extends Component {
         this.state = {
             frequency: 440,
             showPlay: false,
-            showInput: false
+            showInput: false,
+            value: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -21,7 +35,8 @@ class EditableToneGenerator extends Component {
     }
 
     handleButtonClick(e) {
-        this.setState({ waveType: e.target.innerText, showInput: true, showPlay: true })
+        console.log(e.target.alt)
+        this.setState({ waveType: e.target.alt, showInput: true, showPlay: true })
     }
 
     generateRandomFrequency() {
@@ -46,11 +61,12 @@ class EditableToneGenerator extends Component {
         const { showPlay, frequency, waveType, showInput } = this.state;
         return (
             <div>
+                <h1>Editable Tone Generator</h1>
                 <p>select a wavetype:</p>
                 {
                     waveTypes.map((type) => {
                         return (
-                            <Button key={type + 'button'} buttonText={type} handleClick={this.handleButtonClick} />
+                            <Tooltip key={type + 'tooltip'} title={type}><Button key={type + 'button'} style={{margin: 10}} shape='circle' size='large' key={type + 'button'} onClick={this.handleButtonClick}><img src={types[type]} alt={type}/></Button></Tooltip>
                         )
                     })
                 }
@@ -58,7 +74,7 @@ class EditableToneGenerator extends Component {
                 {showInput ? <Input label='frequency' value={this.state.value} onSubmit={this.handleSubmit} handleChange={this.handleInputChange} /> : '' }
                 {showPlay ? <Tone frequency={frequency} waveType={waveType} toggle={this.startOver} /> : 'Enter a frequency, or click random' }
                 <p>Current frequency: {frequency}</p>
-                <button onClick={this.generateRandomFrequency}>random!</button>
+                <Button onClick={this.generateRandomFrequency}>random!</Button>
             </div>
         )
 
