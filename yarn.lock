@@ -4677,6 +4677,10 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
+vexflow@^1.2.83:
+  version "1.2.83"
+  resolved "https://registry.yarnpkg.com/vexflow/-/vexflow-1.2.83.tgz#cd4b37aca41700d5797bc503346871901af97943"
+
 vm-browserify@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
