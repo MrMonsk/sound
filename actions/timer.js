@@ -1,5 +1,6 @@
 import * as actionTypes from '../constants/actionTypes';
 
+let timer = null;
 export function startTimer() {
     return (dispatch) => {
         clearInterval(timer);
