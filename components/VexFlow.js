@@ -6,10 +6,9 @@ const {
     Accidental,
     Formatter,
     Stave,
-    Renderer
+    Renderer,
+    VF
 } = Vex.Flow
-
-const VF = Vex.Flow;
 
 class VexFlow extends Component {
     constructor() {
