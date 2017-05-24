@@ -5,6 +5,9 @@ import EditableToneGenerator from './EditableToneGenerator';
 import Tone from '../components/Tone';
 import Dashboard from './Dashboard';
 
+// styles
+import './Main.scss';
+
 class Main extends Component {
     render() {
         return (
