@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getElapsedTime } from '../utils/helpers';
+import { startTimer, stopTimer, resetTimer } from '../actions/timer';
 
 class Timer extends Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            exercise: { timeRemaining: 5 }
-        }
+        super(props);
     }
 
     render() {
-        const { exercise } = this.state;
+        const { actions } = this.props;
         return (
             <div>
-                {(exercise.timeRemaining / 1000 / 60) << 0}:{`00${(exercise.timeRemaining / 1000) % 60}`.substr(-2)}
+                <div>Time: {}</div>
+                <button onClick={() => actions.startTimer()}>Start</button>
+                <button onClick={() => actions.stopTimer()}>Stop</button>
+                <button onClick={() => actions.resetTimer()}>Reset</button>
             </div>    
         );
     }
 }
 
-export default Timer;
+function mapStateToProps(state) {
+    const { timer, theory } = state;
+    return {
+        timer, theory
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators({
+            startTimer, stopTimer, resetTimer
+        }, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);

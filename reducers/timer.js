@@ -1,29 +1,24 @@
 import * as actionTypes from '../constants/actionTypes';
 
-const INITIAL_STATE = { status: 'Stopped', seconds: 0 };
+const INITIAL_STATE = {
+    isTimeUp: false,
+    timeRemaining: 0
+}
 
 export default function (state=INITIAL_STATE, action) {
     switch(action.type) {
-        case 'TIMER_START':
+        case actionTypes.SET_TIME_REMAINING:
             return {
                 ...state,
-                status: 'Running'
+                timeRemaining: action.payload
             };
-        case 'TIMER_STOP':
+        case actionTypes.SET_TIME_UP:
             return {
                 ...state,
-                status: 'Stopped'
+                isTimeUp: true
             };
-        case 'TIMER_TICK':
-            return {
-                ...state,
-                seconds: state.seconds + 1
-            };
-        case 'TIMER_RESET':
-            return {
-                ...state,
-                seconds: 0
-            };
+        case actionTypes.SET_TIMER_RESET:
+            return INITIAL_STATE;
         default:
             return state;
     }

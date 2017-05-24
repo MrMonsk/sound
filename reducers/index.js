@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import theory from './theory';
+import timer from './timer';
 
 const rootReducer = combineReducers({
-    theory
+    theory,
+    timer
 });
 
 export default rootReducer;

@@ -11,6 +11,7 @@ class Main extends Component {
             <div className='main'>
                 <EditableToneGenerator />
                 <Dashboard />
+                <Timer updateInterval={1000}/>
             </div>
         )
     }
