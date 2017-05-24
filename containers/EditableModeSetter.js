@@ -25,9 +25,9 @@ class EditableModeSetter extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({ customSet: this.state.value, value: '' })
+        this.setState({ customSet: this.state.value, value: '', showCustomInput: false })
         setTimeout(() => {
-            const customMode = this.state.customSet.split('').map((s) => {return parseInt(s)});
+            const customMode = this.state.customSet.split(' ').map((s) => {return parseInt(s)});
             this.props.actions.setScaleMode(customMode, true);
         }, 0);
     }
@@ -38,11 +38,11 @@ class EditableModeSetter extends Component {
             <div>
                 <button onClick={this.toggleCustomInput}>set custom set</button>
                 { showCustomInput 
-                    ? <Input label='custom set' value={this.state.value} onSubmit={this.handleSubmit} handleChange={this.handleInputChange} />
+                    ? <Input label='custom set' value={this.state.value} onSubmit={this.handleSubmit} handleChange={this.handleInputChange} placeholder='0 2 4 5'/>
                     : ''
                 }
                 { customSet && customSet.length 
-                    ? <div>{customSet}</div>
+                    ? <div>You've typed: {customSet}</div>
                     : ''
                 }
             </div>

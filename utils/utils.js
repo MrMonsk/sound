@@ -4,7 +4,7 @@ const gain = context.createGain();
 osc.connect(gain);
 osc.start();
 
-export function updateOscillator(waveType, frequency=440) {
+export function updateOscillator(waveType='sine', frequency=440) {
     osc.type = waveType;
     osc.frequency.value = frequency;
 }
