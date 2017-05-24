@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import theory from './theory';
 
 const rootReducer = combineReducers({
-    theory
+    theory,
 });
 
 export default rootReducer;
