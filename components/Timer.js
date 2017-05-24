@@ -1,40 +1,58 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { getElapsedTime } from '../utils/helpers';
-import { startTimer, stopTimer, resetTimer } from '../actions/timer';
 
-class Timer extends Component {
+export default class Timer extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            elapsedTime: 0,
+            isTimerRunning: false
+        };
+        this.handleStartClick = this.handleStartClick.bind(this);
+        this.handleResetClick = this.handleResetClick.bind(this);
+        this.handleStopClick = this.handleStopClick.bind(this);
+    }
+
+    getSeconds() {
+        return (`0${(this.state.elapsedTime % 60)}`.slice(-2));
+    }
+
+    getMinutes() {
+        return Math.floor(this.state.elapsedTime / 60);
+    }
+
+    handleStartClick() {
+        this.setState({ isTimerRunning: true });
+        this.incrementer = setInterval(() => {
+            this.setState({ elapsedTime: this.state.elapsedTime + 1 });
+        }, 1000);
+    }
+
+    handleStopClick() {
+        clearInterval(this.incrementer);
+        this.setState({
+            lastClearedIncrementer: this.incrementer,
+            isTimerRunning: false
+        });
+    }
+
+    handleResetClick() {
+        this.setState({ elapsedTime: 0 });
     }
 
     render() {
-        const { actions } = this.props;
+        const { isTimerRunning, elapsedTime } = this.state;
         return (
-            <div>
-                <div>Time: {}</div>
-                <button onClick={() => actions.startTimer()}>Start</button>
-                <button onClick={() => actions.stopTimer()}>Stop</button>
-                <button onClick={() => actions.resetTimer()}>Reset</button>
-            </div>    
-        );
+            <div className='timer'>
+                <div>{this.getMinutes()}:{this.getSeconds()}</div>
+                { !this.state.isTimerRunning 
+                    ? <button onClick={this.handleStartClick}>start</button>
+                    : <button onClick={this.handleStopClick}>stop</button>
+                }
+                { (isTimerRunning || elapsedTime !== 0)
+                    ? <button onClick={this.handleResetClick}>reset</button>
+                    : ''
+                }
+            </div>
+        )
     }
 }
-
-function mapStateToProps(state) {
-    const { timer, theory } = state;
-    return {
-        timer, theory
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators({
-            startTimer, stopTimer, resetTimer
-        }, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Timer);
