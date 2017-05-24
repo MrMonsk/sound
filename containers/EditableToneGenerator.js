@@ -45,8 +45,11 @@ class EditableToneGenerator extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.theory && nextProps.theory.scaleMode != this.state.somePitches) {
-            const newPitches = [ 261.6, 277.2, 293.7, 311.1, 329.6, 349.2, 370.0, 392.0, 415.3, 440.0, 466.2, 493.9, 523.3 ].filter((value, index) => {if (nextProps.theory.scaleMode.includes(index)) { return value }})
-            this.setState({ somePitches: newPitches })
+            const newPitches = [ 261.6, 277.2, 293.7, 311.1, 329.6, 349.2, 370.0, 392.0, 415.3, 440.0, 466.2, 493.9, 523.3 ]
+            const newSet = nextProps.theory.scaleMode.map((val) => {
+                return newPitches[val]
+            })
+            this.setState({ somePitches: newSet })
         }
     }
 

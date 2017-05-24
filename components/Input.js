@@ -10,12 +10,12 @@ class Input extends Component {
     }
 
     render() {
-        const { label, onSubmit, handleChange, value } = this.props;
+        const { label, onSubmit, handleChange, value, placeholder } = this.props;
         return (
             <form onSubmit={onSubmit}>
                 <label>
                     {label}:
-                    <input type="text" value={value} onChange={handleChange} />
+                    <input type="text" value={value} placeholder={placeholder} onChange={handleChange} />
                 </label>
                 <input type="submit" value="Enter" />
             </form>
