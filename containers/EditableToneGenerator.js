@@ -56,7 +56,7 @@ class EditableToneGenerator extends Component {
 
     incrementFrequency() {
         console.log(this.state.incrementer)
-        this.setState({ frequency: this.state.somePitches[this.state.incrementer], incrementer: (this.state.incrementer + 1) % 8 })
+        this.setState({ frequency: this.state.somePitches[this.state.incrementer], incrementer: (this.state.incrementer + 1) % this.state.somePitches.length })
     }
 
     startOver() {
