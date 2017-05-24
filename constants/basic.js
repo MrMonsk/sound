@@ -10,7 +10,8 @@ export const basicModes = {
     melodicMinor: [0,2,3,5,7,9,11,12],
     pentatonic: [0, 2, 4, 7, 9, 12],
     minorPentatonic: [0,3,5,7,10,12],
-    dorian: [0,2,3,5,7,9,10,12]
+    dorian: [0,2,3,5,7,9,10,12],
+    mixolydian: [0,2,4,5,7,9,10,12]
 }
 
 export const waveTypes = [
