@@ -20,7 +20,7 @@ class Dashboard extends Component {
     handleInputChange(value) {
         this.props.actions.setScaleMode(value);
     }
-    
+
     render() {
         const { theory } = this.props;
         return (
