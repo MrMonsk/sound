@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Input from '../components/Input';
-import Timer from '../components/Timer';
 import EditableToneGenerator from './EditableToneGenerator';
-import Tone from '../components/Tone';
 import Dashboard from './Dashboard';
+import VexFlow from '../components/VexFlow';
 
 // styles
 import './Main.scss';
@@ -14,6 +12,7 @@ class Main extends Component {
             <div className='main'>
                 <EditableToneGenerator />
                 <Dashboard />
+                <VexFlow />
             </div>
         )
     }

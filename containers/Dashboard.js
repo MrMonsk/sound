@@ -19,7 +19,7 @@ class Dashboard extends Component {
     handleInputChange(value) {
         this.props.actions.setScaleMode(value);
     }
-    
+
     render() {
         const { theory } = this.props;
         return (
@@ -39,6 +39,7 @@ class Dashboard extends Component {
                         )
                     })}
                 </Select>
+                {this.props.theory ? this.props.theory.scaleMode : 'select a mode'}
             </div>
         )
     }
