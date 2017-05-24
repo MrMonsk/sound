@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setScaleMode } from '../actions/theory';
+import EditableModeSetter from './EditableModeSetter';
 
 import { basicModes } from '../constants/basic';
 
@@ -39,6 +40,7 @@ class Dashboard extends Component {
                         )
                     })}
                 </Select>
+                <EditableModeSetter />
             </div>
         )
     }

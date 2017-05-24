@@ -27,7 +27,7 @@ class EditableModeSetter extends Component {
         e.preventDefault();
         this.setState({ customSet: this.state.value, value: '' })
         setTimeout(() => {
-            const customMode = this.state.customSet.split('');
+            const customMode = this.state.customSet.split('').map((s) => {return parseInt(s)});
             this.props.actions.setScaleMode(customMode, true);
         }, 0);
     }
