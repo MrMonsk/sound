@@ -10,9 +10,10 @@ class App extends Component {
     return (
       <LocaleProvider locale={enUS}>
         <div className="App">
-          <p className="App-intro">
-            Sound
-          </p>
+          <div className="App-intro">
+            <h1>Sound Things</h1>
+            <p>by Yowon Yoon</p>
+          </div>
           <Main />
         </div>
       </LocaleProvider>
