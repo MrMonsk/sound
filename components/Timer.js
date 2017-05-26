@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Button, Tag } from 'antd';
+
 export default class Timer extends React.Component {
     constructor(props) {
         super(props);
@@ -43,13 +45,13 @@ export default class Timer extends React.Component {
         const { isTimerRunning, elapsedTime } = this.state;
         return (
             <div className='timer'>
-                <div>{this.getMinutes()}:{this.getSeconds()}</div>
+                <Tag color='purple'>{this.getMinutes()}:{this.getSeconds()}</Tag>
                 { !this.state.isTimerRunning 
-                    ? <button onClick={this.handleStartClick}>start</button>
-                    : <button onClick={this.handleStopClick}>stop</button>
+                    ? <Button size='small' onClick={this.handleStartClick}>{ elapsedTime > 0 ? 'resume' : 'start'}</Button>
+                    : <Button size='small' onClick={this.handleStopClick}>stop</Button>
                 }
                 { (isTimerRunning || elapsedTime !== 0)
-                    ? <button onClick={this.handleResetClick}>reset</button>
+                    ? <Button size='small' onClick={this.handleResetClick}>reset</Button>
                     : ''
                 }
             </div>
