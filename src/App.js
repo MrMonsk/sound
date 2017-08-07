@@ -3,7 +3,7 @@ import { LocaleProvider } from 'antd'
 import enUS from 'antd/lib/locale-provider/en_US';
 import logo from './logo.svg'
 import './App.css'
-import Main from '../containers/Main'
+import Main from './containers/Main'
 
 class App extends Component {
   render() {

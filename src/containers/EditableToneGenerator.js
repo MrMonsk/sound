@@ -8,10 +8,10 @@ import { connect } from 'react-redux';
 
 // UI
 import { Button, Tooltip, Icon } from 'antd';
-import saw from '../assets/saw.svg';
-import sine from'../assets/sine.svg';
-import square from '../assets/square.svg';
-import triangle from '../assets/triangle.svg';
+import saw from '../../assets/saw.svg';
+import sine from'../../assets/sine.svg';
+import square from '../../assets/square.svg';
+import triangle from '../../assets/triangle.svg';
 
 const types = {
     sawtooth: saw,
